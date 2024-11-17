@@ -3,6 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    padding-top: 60px; /* Add padding to prevent content from being hidden behind the navbar */
 }
 
 /* Grid container */
@@ -200,8 +201,14 @@ body::after {
     background-color: #009688;
     padding: 10px 20px;
     flex-wrap: wrap;
+    position: fixed; /* Fix the navbar to the top */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Ensure the navbar is always on top */
 }
 
+/* Navbar links */
 .navbar a {
     color: white;
     text-decoration: none;
