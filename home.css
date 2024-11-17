@@ -1,0 +1,246 @@
+/* Basic styling for body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Grid container */
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        "profile main"
+        "footer footer";
+    grid-template-columns: 1fr 2fr; /* Define widths of columns */
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Define each area */
+.profile {
+    grid-area: profile;
+    background-color: #f1f1f1;
+    padding: 20px;
+}
+
+.main {
+    grid-area: main;
+    padding: 20px;
+}
+
+.footer {
+    grid-area: footer;
+    text-align: center;
+    padding: 10px;
+    background-color: #009688; /* Changed to consistent teal */
+    color: #fff;
+}
+
+/* Existing Styles */
+.signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 24px;
+    color: #FFFFFF;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.w3-container {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.w3-containerDoc,
+.w3-containerTest {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+.social-icons {
+    margin: 20px 0;
+}
+
+.social-icons a {
+    font-size: 20px;
+    color: white;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #000000;
+}
+
+/* New Styles */
+html, body, h1, h2, h3, h4, h5, h6 {
+    font-family: "Roboto", sans-serif;
+}
+
+body::before, body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    background-color: #009688; /* Consistent teal */
+}
+
+body::before {
+    left: 0;
+}
+
+body::after {
+    right: 0;
+}
+
+.outlined-image {
+    width: 100%;
+    border: 1px solid #FFFFFF;
+}
+
+.section-container {
+    margin-bottom: 14px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.section-heading {
+    font-size: 24px;
+    color: #009688; /* Consistent teal */
+    margin-bottom: 16px;
+}
+
+.equal-width-columns {
+    display: flex;
+    gap: 16px;
+}
+
+.section-content {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Responsive Image Container */
+.responsive-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.responsive-image {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+/* Media Queries for Responsiveness */
+@media only screen and (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+    }
+
+    .signature {
+        font-size: 20px; /* Adjust signature size */
+    }
+
+    .social-icons a {
+        font-size: 18px; /* Adjust icon size */
+    }
+
+    .section-container {
+        padding: 15px; /* Reduce padding */
+    }
+
+    .responsive-container {
+        flex-direction: column; /* Stack items vertically */
+    }
+
+    .outlined-image {
+        max-width: 100%; /* Ensure images don't overflow */
+    }
+
+    .w3-container {
+        padding: 10px; /* Adjust padding */
+    }
+}
+
+/* Adjust padding and margins for smaller screens */
+@media (max-width: 600px) {
+    .grid-container {
+        grid-template-areas:
+            "profile"
+            "main"
+            "footer";
+        grid-template-columns: 1fr;
+    }
+
+    .w3-container {
+        padding: 10px; /* Smaller padding for mobile */
+    }
+
+    .section-container {
+        margin-bottom: 10px; /* Smaller margin for mobile */
+    }
+
+    .responsive-image {
+        width: 100%; /* Full width for mobile */
+        height: auto; /* Maintain aspect ratio */
+    }
+}
+
+/* Navigation Bar Styles */
+.navbar {
+    display: flex;              /* Use flexbox for layout */
+    justify-content: center;    /* Center items horizontally */
+    align-items: center;        /* Align items vertically */
+    background-color: #009688; /* Teal background */
+}
+
+.navbar a {
+    display: block;             /* Ensure links behave as block elements */
+    color: white;               /* Text color */
+    text-align: center;         /* Center text within each link */
+    padding: 10px 16px;         /* Padding around links */
+    text-decoration: none;      /* Remove underline from links */
+    margin: 0 10px;             /* Optional: add margin for spacing between links */
+}
+
+.navbar a:hover {
+    background-color: #00796b; /* Darker shade of teal on hover */
+}
+
+/* Responsive styling */
+@media screen and (max-width: 600px) {
+    .navbar a {
+        float: none;
+        width: 100%; /* Full width for smaller screens */
+    }
+}
+
+/* Container Styling */
+.pdf-container {
+    padding: 16px; /* Space inside the container */
+    margin-top: 16px; /* Space above the container */
+    background-color: #ffffff; /* Light background */
+}
+
+/* Header Styling */
+.pdf-header {
+    font-size: 24px; /* Larger font size */
+    color: #00796b; /* Teal color */
+    margin-bottom: 16px; /* Space below header */
+}
+
+/* Iframe Styling */
+.pdf-viewer {
+    width: 100%; /* Full width */
+    height: 600px; /* Fixed height */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners for iframe */
+    overflow: hidden; /* Hide overflow */
+}
