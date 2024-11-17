@@ -1,54 +1,55 @@
-window.addEventListener('load', function() {
-    const canvas = document.getElementById('background');
-    const ctx = canvas.getContext('2d');
+document.addEventListener('DOMContentLoaded', () => {
+    // Get the navbar element
+    const navbar = document.querySelector('.navbar');
 
-    // Set canvas size to the full window size
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    let gradientOffset = 0;  // Controls the gradient movement
-    let scrollOffset = 0;    // Tracks how much the user has scrolled
-
-    // Function to create a moving gradient
-    function drawGradient() {
-        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-
-        // Define gradient colors
-        gradient.addColorStop(0, `rgba(0, 255, 255, 1)`);  // Cyan
-        gradient.addColorStop(0.5, `rgba(255, 0, 255, 1)`); // Magenta
-        gradient.addColorStop(1, `rgba(0, 0, 255, 1)`);    // Blue
-
-        // Apply gradient fill
-        ctx.fillStyle = gradient;
-
-        // Move the gradient based on scroll position
-        const scrollSpeed = 0.5;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        // Animate gradient position with scroll offset
-        gradientOffset += (0.1 + scrollOffset * scrollSpeed);  // Modify scroll effect speed
-        if (gradientOffset > 1) gradientOffset = 0;  // Reset for continuous loop
+    if (!navbar) {
+        console.error('Navbar element not found.');
+        return;
     }
 
-    // Function to animate the background
-    function animateBackground() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);  // Clear canvas before each new frame
-        drawGradient();  // Draw the animated gradient
-        requestAnimationFrame(animateBackground);  // Keep the animation running
-    }
+    let lastScrollY = window.scrollY;
+    let lastMouseY = 0;
 
-    // Start the animation loop
-    animateBackground();
+    // Flag to check if the mouse is over the navbar
+    let isHovering = false;
 
-    // Update scroll effect on window scroll
-    window.addEventListener('scroll', function() {
-        scrollOffset = window.scrollY / window.innerHeight;  // Calculate scroll offset based on page scroll
-        // Optionally, apply more effects to the background here based on scroll offset
+    // Function to handle scrolling behavior
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > lastScrollY && !isHovering) {
+            // User scrolled down and is not hovering over the navbar, hide it
+            navbar.style.top = `-${navbar.offsetHeight}px`;
+        } else if (!isHovering) {
+            // User scrolled up and is not hovering over the navbar, show it
+            navbar.style.top = '0';
+        }
+        lastScrollY = window.scrollY;
     });
 
-    // Resize canvas when the window size changes
-    window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+    // Function to show the navbar while the mouse is moving upwards
+    document.addEventListener('mousemove', (event) => {
+        // If the mouse is moving up and is not hovering over the navbar, show the navbar
+        if (event.clientY < lastMouseY && !isHovering) {
+            navbar.style.top = '0';
+        } else if (window.scrollY > 0 && !isHovering) {
+            // If the mouse is not moving up and is not hovering the navbar, hide it
+            navbar.style.top = `-${navbar.offsetHeight}px`;
+        }
+
+        // Update the last mouse Y position
+        lastMouseY = event.clientY;
+    });
+
+    // Keep the navbar visible when hovering over it
+    navbar.addEventListener('mouseenter', () => {
+        isHovering = true;
+        navbar.style.top = '0'; // Show navbar when hovering over it
+    });
+
+    navbar.addEventListener('mouseleave', () => {
+        isHovering = false;
+        // Hide the navbar if the mouse leaves it and the page is scrolled down
+        if (window.scrollY > 0) {
+            navbar.style.top = `-${navbar.offsetHeight}px`;
+        }
     });
 });

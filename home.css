@@ -199,13 +199,14 @@ body::after {
     justify-content: center;
     align-items: center;
     background-color: #009688;
-    padding: 10px 20px;
+    padding: 10px 5px;
     flex-wrap: wrap;
     position: fixed; /* Fix the navbar to the top */
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000; /* Ensure the navbar is always on top */
+    transition: top 0.3s ease-in-out;
 }
 
 /* Navbar links */
@@ -243,6 +244,21 @@ body::after {
 
 /* Small screens */
 @media only screen and (max-width: 768px) {
+    .project-full-width {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 1rem;
+    }
+
+    .project-full-width-content {
+        flex-direction: column;
+    }
+
+    .project-standard {
+        flex-direction: column;
+    }
+
     .grid-container {
         grid-template-columns: 1fr;
     }
@@ -368,4 +384,38 @@ body::after {
     border: none;
     border-radius: 4px;
     overflow: hidden;
+}
+
+/* [Previous CSS styles remain the same until the project section] */
+
+/* New Project Section Styles */
+.project-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.project-standard {
+    /* Keep existing project styling */
+    display: flex;
+    align-items: flex-start;
+}
+
+.project-full-width {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    background-color: #f5f5f5;
+    padding: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.project-full-width-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
 }
