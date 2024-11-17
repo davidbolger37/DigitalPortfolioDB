@@ -11,7 +11,7 @@ body {
     grid-template-areas:
         "profile main"
         "footer footer";
-    grid-template-columns: 1fr 2fr; /* Define widths of columns */
+    grid-template-columns: 1fr 2fr;
     gap: 20px;
     padding: 20px;
 }
@@ -32,11 +32,11 @@ body {
     grid-area: footer;
     text-align: center;
     padding: 10px;
-    background-color: #009688; /* Consistent teal */
+    background-color: #009688;
     color: #fff;
 }
 
-/* Signature Styling */
+/* Existing Styles */
 .signature {
     font-family: 'Dancing Script', cursive;
     font-size: 24px;
@@ -45,7 +45,6 @@ body {
     text-align: center;
 }
 
-/* Container Styling */
 .w3-container {
     margin-left: 15px;
     margin-right: 15px;
@@ -61,7 +60,6 @@ footer p {
     margin: 10px 0;
 }
 
-/* Social Icons */
 .social-icons {
     margin: 20px 0;
 }
@@ -76,7 +74,7 @@ footer p {
     color: #000000;
 }
 
-/* General Styling */
+/* New Styles */
 html, body, h1, h2, h3, h4, h5, h6 {
     font-family: "Roboto", sans-serif;
 }
@@ -87,7 +85,7 @@ body::before, body::after {
     top: 0;
     bottom: 0;
     width: 20px;
-    background-color: #009688; /* Consistent teal */
+    background-color: #009688;
 }
 
 body::before {
@@ -112,7 +110,7 @@ body::after {
 
 .section-heading {
     font-size: 24px;
-    color: #009688; /* Consistent teal */
+    color: #009688;
     margin-bottom: 16px;
 }
 
@@ -143,35 +141,34 @@ body::after {
 /* Media Queries for Responsiveness */
 @media only screen and (max-width: 768px) {
     .grid-container {
-        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+        grid-template-columns: 1fr;
     }
 
     .signature {
-        font-size: 20px; /* Adjust signature size */
+        font-size: 20px;
     }
 
     .social-icons a {
-        font-size: 18px; /* Adjust icon size */
+        font-size: 18px;
     }
 
     .section-container {
-        padding: 15px; /* Reduce padding */
+        padding: 15px;
     }
 
     .responsive-container {
-        flex-direction: column; /* Stack items vertically */
+        flex-direction: column;
     }
 
     .outlined-image {
-        max-width: 100%; /* Ensure images don't overflow */
+        max-width: 100%;
     }
 
     .w3-container {
-        padding: 10px; /* Adjust padding */
+        padding: 10px;
     }
 }
 
-/* Adjust padding and margins for smaller screens */
 @media (max-width: 600px) {
     .grid-container {
         grid-template-areas:
@@ -182,30 +179,30 @@ body::after {
     }
 
     .w3-container {
-        padding: 10px; /* Smaller padding for mobile */
+        padding: 10px;
     }
 
     .section-container {
-        margin-bottom: 10px; /* Smaller margin for mobile */
+        margin-bottom: 10px;
     }
 
     .responsive-image {
-        width: 100%; /* Full width for mobile */
-        height: auto; /* Maintain aspect ratio */
+        width: 100%;
+        height: auto;
     }
 }
 
 /* Base Navigation Bar Styling */
 .navbar {
     display: flex;
-    justify-content: space-between; /* Space out links and logo */
+    justify-content: center;
     align-items: center;
     background-color: #009688;
     padding: 10px 20px;
+    flex-wrap: wrap;
 }
 
 .navbar a {
-    display: block;
     color: white;
     text-decoration: none;
     padding: 10px;
@@ -237,10 +234,65 @@ body::after {
     padding: 10px 15px;
 }
 
-/* Media Queries for Navigation Bar */
-@media screen and (max-width: 768px) {
+/* Small screens */
+@media only screen and (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .signature {
+        font-size: 20px;
+    }
+
+    .social-icons a {
+        font-size: 18px;
+    }
+
+    .section-container {
+        padding: 15px;
+    }
+
+    .responsive-container {
+        flex-direction: column;
+    }
+
+    .outlined-image {
+        max-width: 100%;
+    }
+
+    .w3-container {
+        padding: 10px;
+        flex-direction: row; /* Stack items horizontally on large screens */
+    }
+
+    /* Education and Project Sections */
+    .responsive-container,
+    .w3-container .section-content {
+        flex-direction: column;
+    }
+
+    /* Make the image appear below the text */
+    .section-content img {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    /* Ensuring images in project sections are under text */
+    .w3-container .w3-row-padding {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .w3-container .w3-row-padding img {
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    /* Center text for smaller screens */
     .navbar {
-        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
     }
 
     .navbar-toggle {
@@ -248,24 +300,25 @@ body::after {
     }
 
     .navbar-links {
-        display: none; /* Hidden by default */
+        display: none;
         flex-direction: column;
-        width: 100%; /* Full width */
+        width: 100%;
         background-color: #009688;
+        text-align: center;
     }
 
     .navbar-links.active {
-        display: flex; /* Show links when activated */
+        display: flex;
     }
 
     .navbar a {
         text-align: center;
         padding: 10px 0;
-        width: 100%; /* Full width for each link */
+        width: 100%;
     }
 }
 
-/* Styling for Very Small Screens */
+/* Very small screens */
 @media screen and (max-width: 480px) {
     .navbar {
         padding: 5px 10px;
@@ -273,22 +326,28 @@ body::after {
 
     .navbar a {
         padding: 8px 0;
-        font-size: 14px; /* Smaller text */
+        font-size: 14px;
     }
 
     .navbar-toggle {
         font-size: 18px;
     }
+
+    .w3-container {
+        display: flex;
+        flex-direction: column;  /* Stack items vertically */
+        align-items: flex-start;
+    }
 }
 
-/* PDF Container Styling */
+/* Container Styling */
 .pdf-container {
     padding: 16px;
     margin-top: 16px;
     background-color: #ffffff;
 }
 
-/* PDF Header Styling */
+/* Header Styling */
 .pdf-header {
     font-size: 24px;
     color: #00796b;
