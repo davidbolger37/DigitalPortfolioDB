@@ -325,7 +325,7 @@ body::after {
     }
 }
 
-/* Very small screens */
+/* Very small screens need commit */
 @media screen and (max-width: 480px) {
     .navbar {
         padding: 5px 10px;
